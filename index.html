@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Rahul Patil — Java Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { light: '#3b82f6', dark: '#2563eb' },
+                        secondary: { light: '#10b981', dark: '#059669' }
+                    },
+                    animation: { 'fade-in': 'fadeIn 0.5s ease-in-out', 'slide-up': 'slideUp 0.5s ease-out' },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #3b82f6, #10b981);
+        }
+
+        .dark .gradient-text {
+            background-image: linear-gradient(45deg, #60a5fa, #34d399);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .avatar-shadow {
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.16);
+        }
+    </style>
+</head>
+
+<body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#home" class="text-2xl font-bold gradient-text">Rahul Patil</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#technologies" class="nav-link">Technologies</a>
+                    <a href="#certs" class="nav-link">Certifications</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle"
+                        class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                        title="Toggle theme">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#technologies" class="nav-link">Technologies</a>
+                <a href="#certs" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="home" class="min-h-screen flex items-center pt-20">
+  <div class="container mx-auto px-6 py-20">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Left Text Content -->
+      <div class="md:w-1/2 animate-fade-in">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          Hi, I'm <span class="gradient-text">Rahul Patil</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+          Java Developer — Spring Boot • REST APIs • MySQL
+        </h2>
+        <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
+          I design and build scalable backend systems and APIs using Java and Spring Boot. 
+          I enjoy solving problems with clean code, optimized databases, and well-tested services.
+        </p>
+
+        <!-- Buttons Row -->
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact"
+             class="px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
+            Contact Me
+          </a>
+
+          <a href="#projects"
+             class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+            View Work
+          </a>
+
+          <a href="https://github.com/Rahuloo9" target="_blank"
+             class="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center">
+            <i class="fab fa-github mr-2"></i> GitHub
+          </a>
+
+          <!-- Hire Me Button -->
+          <a href="#contact"
+             class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+            Hire Me
+          </a>
+
+          <!-- Resume Button -->
+          <a href="Resume_Rahul.pdf" download
+             class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Download Resume
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Image Content -->
+      <div class="md:w-1/2 flex justify-center animate-slide-up">
+        <div id="profile-avatar"
+             class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-blue-400 to-green-400 avatar-shadow">
+          <img id="profile-image" src="photo/Rahul.jpg" alt="Rahul Patil"
+               class="w-full h-full object-cover">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- About -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">About <span class="gradient-text">Me</span></h2>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-lg">
+                        
+                        <img src="photo/Rahul.jpg" alt="Rahul Patil" class="w-full h-full object-cover">
+
+                    </div>
+                </div>
+
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+                    <p class="mb-6 text-gray-600 dark:text-gray-300">
+                        I'm a Java developer with hands-on experience building backend services and full-stack
+                        applications.
+                        I have worked with Spring Boot, Hibernate, REST APIs, and MySQL, and participated in front-end
+                        work using React/Angular during training projects.
+                        I follow clean code practices, CI/CD basics, and write APIs that are maintainable and
+                        well-documented.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                    <i class="fas fa-graduation-cap text-primary-light dark:text-primary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Education</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                B.Tech in Information Technology<br>
+                                Swami Vivekanand College of Engineering (2017–2021)<br>
+                                CGPA: 7.1/10
+                            </p>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-secondary-light/10 dark:bg-secondary-dark/10 mr-4">
+                                    <i class="fas fa-briefcase text-secondary-light dark:text-secondary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Experience</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Java Developer — Bit Hub Technology, Pune<br>
+                                Full Stack Java Developer (Training) — Seed Infotech Ltd, Pune (Sep 2022 - Jul 2023)<br>
+                                Android Developer Intern — Ypsilon IT Solutions (Dec 2019 - Mar 2020)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-10 text-center">My <span class="gradient-text">Projects</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Spotify Clone -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="photo/projectPhotos/spotifyClone.png" alt="Spotify Clone"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Spotify Clone</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>Developed a Spotify-like web interface using HTML, CSS, and JavaScript.</li>
+                            <li>Designed a fully responsive and clean layout.</li>
+                            <li>Included homepage, playlists, and player UI.</li>
+                            <li>Added hover effects and smooth animations.</li>
+                            <li>Built to practice front-end development and UI design.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-200 text-xs rounded">HTML</span>
+                            <span
+                                class="px-2 py-1 bg-yellow-100 dark:bg-yellow-800 text-yellow-700 dark:text-yellow-200 text-xs rounded">CSS</span>
+                            <span
+                                class="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 text-xs rounded">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/Spotify-Project" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Library and Advance Scheduling -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="photo/projectPhotos/lib.png" alt="Library and Advance Scheduling"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Library and Advance Scheduling</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>College project using Java, Android.</li>
+                            <li>Students can check book availability and schedule slots.</li>
+                            <li>Admin can track issued books and manage data.</li>
+                            <li>Includes both mobile and web interfaces.</li>
+                            <li>Focused on real-time resource management.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-yellow-100 dark:bg-yellow-800 text-yellow-700 dark:text-yellow-200 text-xs rounded">Java</span>
+                            <span
+                                class="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 text-xs rounded">Android</span>
+                            <span
+                                class="px-2 py-1 bg-red-100 dark:bg-red-800 text-red-700 dark:text-red-200 text-xs rounded">xml</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/libray-and-advance-scheduling" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- TO-DO App -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="photo/projectPhotos/ToDOAPp.png" alt="TO-DO App" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">TO-DO App</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>Simple task management app built using HTML, CSS, and JavaScript.</li>
+                            <li>Users can add, edit, mark as complete, and delete tasks easily.</li>
+                            <li>Stores tasks in local storage to preserve data after refresh.</li>
+                            <li>Clean and responsive UI with smooth animations.</li>
+                            <li>Helps users stay organized and track daily goals efficiently.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-yellow-100 dark:bg-yellow-800 text-yellow-700 dark:text-yellow-200 text-xs rounded">HTML</span>
+                            <span
+                                class="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 text-xs rounded">CSS</span>
+                            <span
+                                class="px-2 py-1 bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-200 text-xs rounded">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/TO-DO-App" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+
+                <!-- E-commerce Website -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="photo/projectPhotos/ecom.png" alt="E-commerce Website" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Website</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>Built a shopping website using HTML, CSS, and JavaScript.</li>
+                            <li>Designed a product listing and shopping cart system.</li>
+                            <li>Optimized for smooth and responsive user experience.</li>
+                            <li>Added modern UI with hover and transition effects.</li>
+                            <li>Focus on front-end functionality and styling.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-200 text-xs rounded">HTML</span>
+                            <span
+                                class="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 text-xs rounded">CSS</span>
+                            <span
+                                class="px-2 py-1 bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-200 text-xs rounded">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/EcommeresWebsite" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Notepad Project -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="https://cdn.dribbble.com/users/60266/screenshots/11645472/media/3e8da77c9261e2e1c3db054869d2603f.png"
+                        alt="Notepad Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Notepad Project</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>Java-based text editor using Swing framework.</li>
+                            <li>Features create, edit, and save text files.</li>
+                            <li>Includes basic options like cut, copy, and paste.</li>
+                            <li>Designed for lightweight and offline use.</li>
+                            <li>Simple UI with clean functionality.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-200 text-xs rounded">Java</span>
+                            <span
+                                class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 text-xs rounded">Swing</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/NotePedeProject" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Status Downloader -->
+                <div data-aos="fade-up"
+                    class="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-500">
+                    <img src="https://cdn.dribbble.com/users/205984/screenshots/16047477/media/2b536d55e7c1b447353967602eabec3a.png"
+                        alt="WhatsApp Status Downloader" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">WhatsApp Status Downloader</h3>
+                        <ul class="text-gray-600 dark:text-gray-300 text-sm mb-3 list-disc list-inside">
+                            <li>Developed an Android app using Java and XML.</li>
+                            <li>Allows users to view and download WhatsApp statuses.</li>
+                            <li>Reads media from WhatsApp’s hidden status folder.</li>
+                            <li>Provides an easy-to-use, clean interface.</li>
+                            <li>Focuses on fast performance and user privacy.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-200 text-xs rounded">Java</span>
+                            <span
+                                class="px-2 py-1 bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-200 text-xs rounded">Android</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-100 text-xs rounded">XML</span>
+                        </div>
+                        <a href="https://github.com/Rahuloo9/WatsappStatus" target="_blank"
+                            class="block text-center bg-primary text-white py-2 rounded-md font-semibold hover:bg-opacity-80 transition-all">View
+                            on GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">My <span class="gradient-text">Skills</span></h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- skill cards (same as before) -->
+                <!-- Core Java -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-java text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2"> Java</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width:92%"></div>
+                    </div>
+                </div>
+
+                <!-- Spring Boot -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fas fa-server text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Spring Boot</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width:90%"></div>
+                    </div>
+                </div>
+
+                <!-- Hibernate/JPA -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fas fa-database text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Hibernate / JPA</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width:82%"></div>
+                    </div>
+                </div>
+
+                <!-- MySQL -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-database text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">MySQL</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width:88%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- React -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-react text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">React.js</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width:70%"></div>
+                    </div>
+                </div>
+
+                <!-- Android -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-android text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Android (Java)</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width:75%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-git-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Git & Tools</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width:88%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsive -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-mobile-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Responsive Design</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width:95%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section id="technologies" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">My <span class="gradient-text">Technologies</span></h2>
+
+            <div class="max-w-3xl mx-auto text-lg text-gray-700 dark:text-gray-300 space-y-4">
+                <p><strong>Languages:</strong> OOPs,Core Java, JavaScript, SQL</p>
+                <p><strong>Java Technologies:</strong> Java, Spring Boot, Hibernate, J2EE, REST APIs</p>
+                <p><strong>Frontend:</strong> HTML, CSS, JavaScript, React.js</p>
+                <p><strong>Database:</strong> MySQL</p>
+                <p><strong>Tools:</strong> Git, Maven, Postman, Jenkins (basic), Apache Tomcat</p>
+                <p><strong>Web/App Servers:</strong> Apache Tomcat</p>
+                <p><strong>IDEs:</strong> Eclipse, STS, VS Code</p>
+                <p><strong>Operating Systems:</strong> Windows, Linux</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Certifications & Achievements -->
+    <section id="certs" class="py-14 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                Certifications & <span class="gradient-text">Achievements</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Certificate 1 -->
+                <a href="https://www.linkedin.com/in/rahulpatil09/overlay/Certifications/349257493/treasury/?profileId=ACoAAC10P2gBFy2_17blJ276-ksFhhs9xarGavQ"
+                    target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-code text-blue-500"></i>
+                            Java Full Stack Developer
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">Seed Infotech Ltd.</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+                <!-- Certificate 2 -->
+                <a href="https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_29959473947367270000_shared/1-c7e82a04-8adb-4cf5-9af1-9a54ec921da9.pdf"
+                    target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-coffee text-orange-500"></i>
+                            Java Programming Fundamentals
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">Infosys Springboard</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+                <!-- Certificate 3 -->
+                <a href="https://www.hackerrank.com/certificates/263d76017083" target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-terminal text-green-500"></i>
+                            Java Programming
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">HackerRank</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+                <!-- Certificate 4 -->
+                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/3e82f942ff6bbd816aed3ca0de09ee51c6427e46"
+                    target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-database text-purple-500"></i>
+                            Introduction to SQL
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">DataCamp</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+
+
+                <!-- Certificate 5 -->
+                <a href="https://www.linkedin.com/in/rahulpatil09/overlay/Certifications/376843202/treasury/?profileId=ACoAAC10P2gBFy2_17blJ276-ksFhhs9xarGavQ"
+                    target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-database text-purple-500"></i>
+                            Azure Fundamentals
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">Microsoft</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+
+
+                <!-- Certificate 6 -->
+                <a href="https://archive.nptel.ac.in/content/noc/NOC19/SEM2/Ecertificates/106/noc19-cs84/Course/NPTEL19CS84S31490123159e41111e9919787a2ec641276.jpg"
+                    target="_blank"
+                    class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold mb-2 flex items-center gap-2">
+                            <i class="fas fa-database text-purple-500"></i>
+                            Java Certificate
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">Indian Institute of Technology, Kharagpur</p>
+                    </div>
+                    <span class="mt-3 text-sm text-primary-light hover:underline flex items-center gap-1">
+                        View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                    </span>
+                </a>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 animate__animated animate__fadeInUp">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-10">
+                <!-- Contact Info -->
+                <div class="md:w-1/2 space-y-6 animate__animated animate__fadeInLeft">
+                    <p class="text-lg leading-relaxed">
+                        I’m always open to discussing new projects, ideas, or opportunities.
+                        Whether you have a question or just want to say hi — I’ll try my best to get back to you!
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 hover:translate-x-2 transition-transform duration-300">
+                            <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark text-xl"></i>
+                            <p>+91 9826675049</p>
+                        </div>
+                        <div class="flex items-center space-x-4 hover:translate-x-2 transition-transform duration-300">
+                            <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark text-xl"></i>
+                            <p>Indore, India</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://github.com/Rahuloo9" target="_blank"
+                            class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transform transition-all duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rahulpatil09/" target="_blank"
+                            class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transform transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_rahul_oo9/" target="_blank"
+                            class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transform transition-all duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.hackerrank.com/profile/Rahuloo9" target="_blank"
+                            class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transform transition-all duration-300">
+                            <i class="fas fa-code text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold gradient-text">Rahul Patil</a>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">© 2025 Rahul Patil — All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+
+        // Mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            });
+        });
+
+        // Contact form submit -> EmailJS
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Build template params
+            const templateParams = {
+                from_name: form.from_name.value || form.querySelector('#name').value,
+                from_email: form.from_email.value || form.querySelector('#email').value,
+                subject: form.subject.value || form.querySelector('#subject').value,
+                message: form.message.value || form.querySelector('#message').value,
+                // you can include to_email if your EmailJS template uses it:
+                to_email: 'patil09091997@gmail.com'
+            };
+
+            // Validate EmailJS IDs are set
+            if (!window.EMAILJS_USER_ID || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID || window.EMAILJS_USER_ID === 'YOUR_EMAILJS_USER_ID') {
+                status.textContent = 'Contact form not configured: replace EmailJS IDs in the HTML with your EmailJS keys.';
+                status.style.color = '#f59e0b'; // amber-400
+                return;
+            }
+
+            status.textContent = 'Sending message…';
+            emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function (response) {
+                    status.textContent = 'Message sent — I will get back to you soon. Thank you!';
+                    status.style.color = '#10b981'; // green
+                    form.reset();
+                }, function (error) {
+                    console.error('EmailJS error:', error);
+                    status.textContent = 'Error sending message. Try again later or contact me directly at patil09091997@gmail.com';
+                    status.style.color = '#ef4444'; // red
+                });
+        });
+
+        // Animate on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+        });
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = 'slideUp 0.5s ease-out forwards';
+        });
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+
+</html>
